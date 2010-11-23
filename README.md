@@ -13,7 +13,8 @@ messages and display them on their screen.
 Browser Support
 ---------------
 
-You need a modern browser. This code has been tested in:
+You need a modern browser for the [CORS](http://www.w3.org/TR/cors/) support.
+This code has been tested in:
 
 * Google Chrome
 * Safari 4+
@@ -26,8 +27,8 @@ Strophe
 
 This demo uses the wonderful Strophe.js to do all the clever stuff.
 
-[strophe.js](https://github.com/metajack/strophejs) 
-[strophe.pubsub.js](https://github.com/metajack/strophejs)
+* [strophe.js](https://github.com/metajack/strophejs) 
+* [strophe.pubsub.js](https://github.com/metajack/strophejs)
 
 minimized versions of both are included, but for the latest versions 
 and more information, visit the links above.
@@ -36,8 +37,8 @@ Setup
 -----
 
 You also need a running XMPP server and BOSH connection manager. [Ejabberd](http://www.ejabberd.im/) 
-is a popular XMPP server and latest versions comes with BOSH support 
-baked in and enabled by default.
+is a popular XMPP server and latest versions (2.1.3+) comes with BOSH and 
+CORS support baked in and enabled by default.
 
 I have added installation instructions for Ejabberd on Centos 5.5 in 
 the /docs directory. If you have similar instructions for other setups
