@@ -44,3 +44,6 @@ I have added installation instructions for Ejabberd on Centos 5.5 in
 the /docs directory. If you have similar instructions for other setups
 please send pull requests, and I'll try and feed these back.
 
+Once you have installed Ejabberd, you will need to update the setting
+in the [js/shared.js(https://github.com/bbcrd/Strophejs-PubSub-Demo/blob/master/js/shared.js) file.
+
