@@ -11,7 +11,7 @@ Download
 You can download the latest version from:
 http://www.process-one.net/en/ejabberd/downloads
 
-From the dropdown choose one of the Linux Installers rather than source. 
+From the dropdown choose one of the 'Linux Installers' rather than source. 
 It's just easier. You'll need to choose which architecture. 
 You can check by running:
 
@@ -20,18 +20,19 @@ $ uname -m
 on the machine you are installing it on. If you see x86_64 then you will 
 need to choose the 64bit version, otherwise choose the 32bit.
 
-Copy this file to /opt on your destination machine.
+Copy this file to your destination machine.
 
 NOTE:
-The rest of these instruction will assume you are installing version 2.1.5
+You will need root access to install Ejabberd. The rest of these 
+instruction will assume you are installing version 2.1.5
 on a 64bit machine for the domain vm.local. If you are installing a 
-different version then just swap the numbers.
+different version then don't panic, just swap the numbers.
 
 
 Unpack
 ------
 
-Naviagate to the installer on your destnation machine. Unpack with:
+Naviagate to the installer on your destination machine. Unpack with:
 
 $ gunzip ejabberd-2.1.5-linux-x86_64-installer.bin.gz
 
@@ -48,7 +49,7 @@ Installation
 You can now run the installer. You'll need to choose a language and
 accept the license.
 
-Next you be asked where to install. I would install in /opt so you 
+Next you be asked where to install. I would install in /opt, so you 
 would fill this in with:
 
 /opt/ejabberd-2.1.5
