@@ -1,0 +1,181 @@
+Installing Ejabberd on Centos 5.5 ready for PubSub over BOSH
+==================================================================
+
+These instructions should help you install Ejabberd, as well as
+getting you up and running for XMPP over HTTP via the BOSH interface. 
+
+
+Download
+--------
+
+You can download the latest version from:
+http://www.process-one.net/en/ejabberd/downloads
+
+From the dropdown choose one of the Linux Installers rather than source. 
+It's just easier. You'll need to choose which architecture. 
+You can check by running:
+
+$ uname -m
+
+on the machine you are installing it on. If you see x86_64 then you will 
+need to choose the 64bit version, otherwise choose the 32bit.
+
+Copy this file to /opt on your destination machine.
+
+NOTE:
+The rest of these instruction will assume you are installing version 2.1.5
+on a 64bit machine for the domain vm.local. If you are installing a 
+different version then just swap the numbers.
+
+
+Unpack
+------
+
+Naviagate to the installer on your destnation machine. Unpack with:
+
+$ gunzip ejabberd-2.1.5-linux-x86_64-installer.bin.gz
+
+--
+
+Now make the installer executable
+
+$ chmod +x ejabberd-2.1.5-linux-x86_64-installer.bin
+
+
+Installation
+------------
+
+You can now run the installer. You'll need to choose a language and
+accept the license.
+
+Next you be asked where to install. I would install in /opt so you 
+would fill this in with:
+
+/opt/ejabberd-2.1.5
+
+--
+
+Next you will be asked to set a desired domain name. This needs to be 
+a domain name that the computer you are installing this on is known as on 
+your network. If you are installing ejabberd locally or on a virtual 
+machine you could give it a name like vm.local and adjust you hosts file
+to suit.
+
+--
+
+Next create the admin user. Try and change the username to something other
+than admin. This is the superuser that has full admin control of your installation.
+
+e.g nimda
+
+--
+
+Next you create a password for the admin user
+
+e.g a1b2c3
+
+--
+
+Answer NO to whether this machine is part of a cluster. Mark it as something to
+learn about afterwards.
+
+--
+
+That should be it, and you will be asked if you would like to continue and
+actually install Ejabberd. Choose Yes.
+
+--
+
+Once this finshes you should have Ejabberd installed in /opt. You can now remove
+the installer ejabberd-2.1.5-linux-x86_64-installer.bin
+
+
+Starting Ejabberd
+-----------------
+
+I find the easiest way to manage the starting and stopping of Ejabberd is via a
+init.d script. Create a file in /etc/init.d/ called ejabberd the copy and paste this
+code into it:
+
+https://gist.github.com/710135
+
+Remembering to change line 13 to point to your installed version.
+
+--
+
+Next you need to make
+that file executable and add it to the other programs started on bootup:
+
+$ chmod +x /etc/init.d/ejabberd
+$ /sbin/chkconfig --add ejabberd 
+
+You can check this with:
+
+$ /sbin/chkconfig --list ejabberd
+ejabberd       	0:off	1:off	2:off	3:on	4:on	5:on	6:off
+
+--
+
+Now we create a user to run it under and change the permission of our install. 
+We'll use the user as we have in our init.d script:
+
+// NOTE: we're creating home directly too, so the .erlang.cookie has a home. I'm
+// sure there are lots of variations here, but this one works.
+$ /usr/sbin/adduser ejabberd  
+$ chown -R ejabberd:ejabberd ejabberd-2.1.5/
+
+--
+
+The BOSH interface which allows us to talk XMPP over HTTP is available via
+port 5280, along with the admin interface. We need to make this available by
+updating the iptables. Load up /etc/sysconfig/iptables in your favourite
+editor and add the line:
+
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 5280 -j ACCEPT
+
+You probably see a similar line where 5280 is replaced with 22. You can add the line
+below that one. To make this change take effect, you'll need to run:
+
+$ /sbin/service/iptables restart
+
+--
+
+Finally, in order to have a PubSub system that anyone can use, we need to
+enable anonomous login, otherwise we would have to create an account for
+every client that wanted to connect. To enable this you need to edit the
+config file:
+
+/opt/ejabberd-2.1.5/conf/ejabberd.cfg
+
+Just after the AUTHENTICATION section (line 250) add this line 
+
+{host_config, "vm.local", [{auth_method, [anonymous]},
+                             {anonymous_protocol, both}]}.
+
+You'll then need to restart Ejabberd:
+
+$ /sbin/service ejabberd restart
+
+--
+
+Hurrah!, all installed and ready to go. You should now be able to log into to the ejabberd 
+admin interface at:
+
+http://vm.local:5280/admin
+
+and you will be asked for a username and password. This seems to always trip people
+up, and they put in the wrong username. To log in as administrator, based on the
+information we have used above, it would be:
+
+username: nimda@vm.local
+password: a1b2c3
+
+--
+
+So, now you have a working XMPP server. Please note, that what I've explained is enough
+to get you going. I can't guarentee that this is a bullet proof secure setup, it's just
+a snippet of what's possible. If you want know more, I suggest you visit:
+
+http://www.ejabberd.im/
+
+

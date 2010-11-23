@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+  <title>XMPP Pubsub Demo :: Publisher</title> 
+  <meta charset=utf-8 />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script type="text/javascript" src="js/strophe.min.js"></script> 
+  <script type="text/javascript" src="js/strophe.pubsub.min.js"></script> 
+  <script type="text/javascript" src="js/shared.js"></script>
+  <script type="text/javascript" src="js/publisher.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif&amp;subset=latin" />
+  <link rel="stylesheet" href="css/styles.css" media="screen" />
+</head> 
+<body> 
+<div id="wrapper">
+  <div id="connection_status">Connecting...</div>
+  <div id="content">
+    <div>
+      <h1>XMPP PubSub Demo</h1>
+      <p>Fill in the box below, and a message will be sent to all the clients connected.</p>
+      <form>
+        <fieldset>
+          <ol>
+            <li>
+              <label for="message">Enter a message to send:</label>
+              <textarea id="message" name="message" rows="5" autofocus></textarea>
+              <fieldset>
+              <legend>Choose your message type:</legend>
+              <ul>
+                <li>
+                  <input id="mred" value="MSG_TEXT" name="type" type="radio" checked="checked">
+                  <label for="mred">Text</label>
+                </li>
+                <li>
+                  <input id="mhtml" value="MSG_HTML" name="type" type="radio">
+                  <label for="mhtml">HTML</label>
+                </li>
+              </ul>
+              </fieldset>
+            </li>
+          </ol>
+        </fieldset>
+        <fieldset>
+          <button id="publish" type="submit" style="display:none;">Publish the message</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+</body> 
+</html> 

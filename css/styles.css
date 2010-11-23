@@ -1,0 +1,120 @@
+html, body, h1, form, fieldset, legend, ol, li {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size:1.4em;
+}
+
+#connection_status {
+  margin-bottom:10px;
+}
+
+body {
+  background: #fff;
+  color: #111111;
+  font: 120% "Droid Serif", Georgia, "Times New Roman", Times, serif;
+  padding: 20px;
+}
+
+form {
+  background: #ccc;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 20px;
+  width: 500px;
+}
+
+form fieldset {
+  border: none;
+  margin-bottom: 15px;
+}
+
+form fieldset:last-of-type {
+  margin-bottom: 0;
+}
+
+form li {
+  background: #b9cf6a;
+  background: rgba(255,255,255,.3);
+  border-color: #e3ebc3;
+  border-color: rgba(255,255,255,.6);
+  border-style: solid;
+  border-width: 2px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  line-height: 30px;
+  list-style: none;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+}
+
+form fieldset fieldset label {
+  line-height: 20px;
+  padding: 0 0 0 20px;
+  font-weight:normal;
+  width: auto;
+}
+
+form ul li {
+  background: none;
+  border: none;
+  float: left;
+}
+
+form input[type=radio] {
+  float: left;
+  margin-right: 5px;
+}
+
+
+form legend,
+form label {
+  font-size: 13px;
+  font-weight:bold;
+  display:block;
+}
+
+
+form textarea {
+  background: #fff;
+  border: none;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  outline: none;
+  padding: 10px;
+  width: 460px;
+  height: 120px;
+  font-size:14px;
+}
+
+form button {
+  background: #666;
+  border: none;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+  display: block;
+  margin: auto;
+  padding: 7px 25px;
+  text-shadow: 0 1px 1px #000000;
+  text-transform: uppercase;
+  font-size:16px;
+  cursor:pointer;
+}
+
+form button:hover {
+  background: #333;
+  border: none;
+}
+
+.red { color:red; }
+.blue { color:blue; }
+.green { color:green; }
