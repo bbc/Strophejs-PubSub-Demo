@@ -26,8 +26,8 @@ Strophe
 
 This demo uses the wonderful Strophe.js to do all the clever stuff.
 
-(strophe.js)[https://github.com/metajack/strophejs] 
-(strophe.pubsub.js)[https://github.com/metajack/strophejs]
+[strophe.js](https://github.com/metajack/strophejs) 
+[strophe.pubsub.js](https://github.com/metajack/strophejs)
 
 minimized versions of both are included, but for the latest versions 
 and more information, visit the links above.
@@ -35,7 +35,7 @@ and more information, visit the links above.
 Setup
 -----
 
-You also need a running XMPP server and BOSH connection manager. (Ejabberd)[http://www.ejabberd.im/] 
+You also need a running XMPP server and BOSH connection manager. [Ejabberd](http://www.ejabberd.im/) 
 is a popular XMPP server and latest versions comes with BOSH support 
 baked in and enabled by default.
 
