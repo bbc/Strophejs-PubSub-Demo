@@ -7,7 +7,7 @@ var Control = {
   pubsub_server: 'pubsub.' + Config.XMPP_SERVER,
   connection: null,
   connected: false,
-  show_raw: false,
+  show_raw: true,
   show_log: true,
 
   log: function (msg) { 
