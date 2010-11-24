@@ -171,14 +171,6 @@ information we have used above, it would be:
 username: nimda@vm.local
 password: a1b2c3
 
-Once logged in, the first thing to do is create a user for the pubsub demo.
-Click on the link Virtual Hosts and then click on your host name. Based on the setup
-we have been using for this file I would click on the vm.local link. You should now
-click on the Users links and you should be provided with a form to allow you to create
-a new user. Add you user e.g User: demo Pass: demo1 and press Add User.
-
-You now have a user you can log in with other than admin, when you are publishing stuff.
-
 --
 
 So, now you have a working XMPP server. Please note, that what I've explained is enough
