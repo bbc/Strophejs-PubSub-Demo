@@ -3,7 +3,7 @@ XMPP/HTTP PubSub Demo
 
 A simple demo of Publish/Subscribe in the browser using Strophe.js
 
-This consists of a client.html and a publisher.html and a working XMPP setup (see below). Once you have added the configuration details for your setup, you should be able to go to the publisher.html and send HTML and txt messages. Any number of people who have connected to client.html will recieved these messages and display them on their screen.
+This consists of a client.html and a publisher.html and a working XMPP setup (see below). You will be able to go to the publisher.html and send HTML and txt messages. Any number of people who have connected to client.html will recieved these messages and display them on their screen. This demo is not meant for production use, and serves to get people up and running with the technology as quickly as possible. 
 
 Browser Support
 ---------------
@@ -53,4 +53,4 @@ This contains the BOSH_SERVICE and XMPP_SERVER locations. You will likely just h
 
 [js/publisher.js](https://github.com/bbcrd/Strophejs-PubSub-Demo/blob/master/js/publisher.js)
 
-At the top of this page you set the account you will be logging in as, to publish the messages to all the connected clients. The installation instruction show you how to create an account.
+At the top of this page you set the account you will be logging in as, to publish the messages to all the connected clients. You can just use the admin account you created when setting up Ejabberd.
