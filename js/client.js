@@ -2,7 +2,7 @@ var Client = {
   pubsub_server: 'pubsub.' + Config.XMPP_SERVER,
   connection: null,
   subscribed: false,
-  show_raw: false,
+  show_raw: true,
   show_log: true,
 
   log: function (msg) { 
