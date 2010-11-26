@@ -1,5 +1,5 @@
 var Control = {
-  // being admin credentials
+  // start admin credentials
   admin_jid: 'bbc@vm.local',
   admin_pass: 'bbc',
   // end admin credentials
@@ -10,35 +10,44 @@ var Control = {
   show_raw: true,
   show_log: true,
 
+  // log to console if available
   log: function (msg) { 
     if (Control.show_log && window.console) {
       console.log(msg);
     }
   },
 
-  status : function(msg, col) {
+  // simplify connection status messages
+  feedback: function(msg, col) {
     $('#connection_status').html(msg).css('color', col);
   },
   
+  // show the raw XMPP information coming in
   raw_input: function (data)  { 
     if (Control.show_raw) {
       Control.log('RECV: ' + data);
     }
   },
 
+  // show the raw XMPP information going out
   raw_output: function (data) { 
     if (Control.show_raw) {
       Control.log('SENT: ' + data);
     }
   },
 
+  // called when data is deemed as sent
   on_send: function (data) {
     Control.log("Data Sent");
+    $('#message').val('');
+    $('#progress').text('message sent').fadeIn().fadeOut(5000);
 
     return true;
   },
 
+  // push the data to the clients
   publish: function (data) {
+    if (data.message == '') return;
     var _d = $build('data', { 'type' : data.type }).t(data.message).toString(); 
 
     Control.connection.pubsub.publish(
@@ -50,17 +59,12 @@ var Control = {
     );
   },
 
+  // initialiser
   init: function () {
-    // send presence
     Control.connection.send($pres());
-
-    // fetch the submit button
     var _p = $('#publish');
-
-    // display the publish button
     _p.fadeIn();
 
-    // setup the onlick event to send data
     _p.click(function(event) {
       event.preventDefault();
 
@@ -75,8 +79,10 @@ var Control = {
     return false;
   },
 
+  // called when we have either created a node
+  // or the one we're creating is available
   on_create_node: function (data) {
-    Control.status('Connected', '#00FF00');
+    Control.feedback('Connected', '#00FF00');
     Control.init();
   },
 }
@@ -86,6 +92,7 @@ $(document).ready(function () {
   $(document).trigger('connect');
 });
 
+// this does the initial connection to the XMPP server
 $(document).bind('connect', function () {
   var conn = new Strophe.Connection(Config.BOSH_SERVICE);
   Control.connection = conn;
@@ -96,16 +103,16 @@ $(document).bind('connect', function () {
     Control.admin_jid, Control.admin_pass, function (status) {
       if (status == Strophe.Status.CONNECTING) {
         Control.log('Connecting...');
-        Control.status('Connecting... (1 of 2)', '#009900');
+        Control.feedback('Connecting... (1 of 2)', '#009900');
       } else if (status == Strophe.Status.CONNFAIL) {
         Control.log('Failed to connect!');
-        Control.status('Connection failed', '#FF0000');
+        Control.feedback('Connection failed', '#FF0000');
       } else if (status == Strophe.Status.DISCONNECTING) {
         Control.log('Disconnecting...');
-        Control.status('Disconnecting...', '#CC6600');
+        Control.feedback('Disconnecting...', '#CC6600');
       } else if (status == Strophe.Status.DISCONNECTED) {
         Control.log('Disconnected');
-        Control.status('Disconnected', '#aa0000');
+        Control.feedback('Disconnected', '#aa0000');
         $(document).trigger('disconnected');
       } else if (status == Strophe.Status.CONNECTED) {
         $(document).trigger('connected');
@@ -115,7 +122,7 @@ $(document).bind('connect', function () {
 });
 
 $(document).bind('connected', function () {
-  Control.status('Connecting... (2 of 3)', '#00CC00');
+  Control.feedback('Connecting... (2 of 3)', '#00CC00');
 
   // first we make sure the pubsub node exists
   // buy trying to create it again
@@ -130,7 +137,6 @@ $(document).bind('connected', function () {
 
 $(document).bind('disconnected', function () {
   Control.log('Disconnected, goodbye');
-  $('#connection_status').html('Disconnected');
-  $('#connection_status').css('color', '#dd0000');
+  Control.feedback('Disconnected', '#dd0000');
 });
 

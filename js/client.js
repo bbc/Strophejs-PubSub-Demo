@@ -5,26 +5,31 @@ var Client = {
   show_raw: true,
   show_log: true,
 
+  // log to console if available
   log: function (msg) { 
     if (Client.show_log && window.console) { console.log(msg); }
   },
 
+  // show the raw XMPP information coming in
   raw_input: function (data)  {
     if (Client.show_raw) {
       Client.log('RECV: ' + data);
     }
   },
 
+  // show the raw XMPP information going out
   raw_output: function (data) { 
     if (Client.show_raw) {
       Client.log('SENT: ' + data);
     }
   },
 
-  feedback : function(msg, col) {
+  // simplify connection status messages
+  feedback: function(msg, col) {
     $('#connection_status').html(msg).css('color', col);
   },
 
+  // decide what to do with an incoming message
   handle_update: function (data) {
     var _d = $(data);
     var _message = _d.html();
@@ -42,18 +47,16 @@ var Client = {
     }
   },
 
+  // inject text
   show_text: function (m) {
     $('#message').text(m);
   },
 
+  // inject html
   show_html: function (m) {
-    $('#message').html(Client.html_decode(m));
-  },
-
-  html_decode: function(input) {
     var e = document.createElement('div');
-    e.innerHTML = input;
-    return e.childNodes[0].nodeValue;
+    e.innerHTML = m;
+    $('#message').html(e.childNodes[0].nodeValue);
   },
 
   on_event: function (message) {
