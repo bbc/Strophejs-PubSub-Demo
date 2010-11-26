@@ -20,25 +20,19 @@ If you find it works in any other browsers, do let us know.
 Strophe
 -------
 
-This demo uses the wonderful Strophe.js to do all the clever stuff.
+This demo uses the wonderful Strophe.js by [Jack Moffitt](http://metajack.im/) to do all the clever stuff.
 
 * [strophe.js](https://github.com/metajack/strophejs) 
 * [strophe.pubsub.js](https://github.com/metajack/strophejs)
 
-minimized versions of both are included, but for the latest versions 
-and more information, visit the links above.
+minimized versions of both are included, but for the latest versions and more information, visit the links above.
 
 Setting up an XMPP server
 -------------------------
 
-You'll need a running XMPP server and BOSH connection manager. [Ejabberd](http://www.ejabberd.im/) 
-is a popular XMPP server and latest versions (2.1.3+) comes with 
-BOSH (Bidirectional-streams Over Synchronous HTTP) and CORS 
-(Cross-Origin Resource Sharing) support baked in and enabled by default.
+You'll need a running [XMPP server](http://xmpp.org/xmpp-software/servers/) and [BOSH connection manager](http://metajack.im/2008/09/08/which-bosh-server-do-you-need/). There are many options out there, but I've choosen to ehlp you install [Ejabberd](http://www.ejabberd.im/), a popular XMPP server and latest versions (2.1.3+) comes with BOSH (Bidirectional-streams Over Synchronous HTTP) and CORS (Cross-Origin Resource Sharing) support baked in and enabled by default.
 
-I have added installation instructions for Ejabberd on Centos 5.5 in 
-the /docs directory. If you have similar instructions for other setups
-please send [pull requests](http://help.github.com/pull-requests/), and I'll try and feed these back.
+I have added installation instructions for Ejabberd on Centos 5.5 in the /docs directory. If you have similar instructions for other setups, please send [pull requests](http://help.github.com/pull-requests/), and I'll try and feed these back.
 
 Setting up the client and publisher
 -----------------------------------
