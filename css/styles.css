@@ -108,11 +108,20 @@ form button {
   text-transform: uppercase;
   font-size:16px;
   cursor:pointer;
+  float:left;
 }
 
 form button:hover {
   background: #333;
   border: none;
+}
+
+form #progress {
+  color:#333;
+  display:block;
+  position:relative;
+  top:4px;
+  left:10px;
 }
 
 .red { color:red; }
