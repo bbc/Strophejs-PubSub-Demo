@@ -8,8 +8,7 @@ This consists of a client.html and a publisher.html and a working XMPP setup (se
 Browser Support
 ---------------
 
-You need a modern browser for the [CORS](http://www.w3.org/TR/cors/) support.
-This code has been tested in:
+You need a modern browser for the [CORS](http://www.w3.org/TR/cors/) support. This code has been tested in:
 
 * Google Chrome
 * Safari 4+
