@@ -34,6 +34,9 @@ Make sure to config Ejabberd to work with anonymous connections by modifying you
                              {anonymous_protocol, both}]}. ```
 (You'll then need to restart Ejabberd)
 
+#####Note on Openfire#####
+Openfire does not allow anonymous pubsub messaging.
+
 ## Setting up the client and publisher
 
 Once you have your XMPP server installed, you need to stick all the files above into a directory you can browse to in a web browser. You'll then need to update the configuration settings to reflect you XMPP server. It's also worth noting that all the files are currently grouped together, so if you are testing this on a public server, you'd want to stick all the publisher stuff behind some authentication, so anyone can't come along and start publishing stuff.
